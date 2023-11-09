@@ -38,7 +38,6 @@ public class Main extends Application {
                 items.add(element);
             } catch (Exception e) {
                 stack.add(element);
-                if (element.equals("("))
             }
         }
 
