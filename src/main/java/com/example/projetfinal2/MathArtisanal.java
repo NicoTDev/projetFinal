@@ -14,16 +14,15 @@ public class MathArtisanal {
     }
 
     private static ArrayList<String> mettreSousNotation(String s) {
-
         //mettre la string sous la forme de programmation
-        s = s.replaceAll("÷", "/").replaceAll(",",".").replaceAll("x","*");
+        s = s.replaceAll("÷", "/").replaceAll(",",".").replaceAll("x","*")
+             .replaceAll("π",String.valueOf(PI)).replaceAll("e",String.valueOf(Math.E));
         //initialiser les variables
         final String PRIORITE = "+-*/^";
         ArrayList<String> expression = new ArrayList<>();
         Stack<String> operateurs = new Stack<>();
         //pour chaque element
         for (String element : s.split(" ")) {
-            System.out.println(expression);
             //si c'est un nombre, l'ajouter à la sortie
             if (Pattern.matches("\\d+(\\.(\\d)+)?",element))
                 expression.add(element);
@@ -37,7 +36,7 @@ public class MathArtisanal {
                 operateurs.pop();
             }
             //sinon, faire la priorité des opérateurs
-            else {
+            else if (PRIORITE.contains(element)) {
                 //si c’est un opérateur o1 alors
                 if (operateurs.isEmpty())
                     operateurs.add(element);
@@ -50,6 +49,9 @@ public class MathArtisanal {
                     operateurs.add(element);
                 }
             }
+            //else, si c'est une fonction
+            else
+                operateurs.add(element);
         }
         //à la fin, ajouter les pauvres opérateurs coincés
         while (!operateurs.isEmpty())
@@ -61,22 +63,57 @@ public class MathArtisanal {
         ArrayList<String> listeTerme = mettreSousNotation(expression);
         while (listeTerme.size() > 1)
             for (int i = 0 ; i < listeTerme.size(); i++) {
-                if (Pattern.matches("[+\\-*/^]", listeTerme.get(i))) {
+                //si c'est un operateur double (qui a besoin de plusieurs valeurs)
+                if (Pattern.matches("[+\\-*/^]", listeTerme.get(i)) || listeTerme.get(i).equals("mod")) {
                     double nombre1 = Double.parseDouble(listeTerme.get(i - 2));
                     double nombre2 = Double.parseDouble(listeTerme.get(i - 1));
                     String operateur = listeTerme.get(i);
                     Double reponse = 0.0;
                     switch (operateur) {
+                        //mode normal
                         case "+" -> reponse = nombre1 + nombre2;
                         case "-" -> reponse = nombre1 - nombre2;
                         case "*" -> reponse = nombre1 * nombre2;
                         case "/" -> reponse = nombre1 / nombre2;
                         case "^" -> reponse = Math.pow(nombre1,nombre2);
+                        case "mod"-> reponse = nombre1 % nombre2;
+                        //mode programmeur
                     }
                     listeTerme.set(i, String.valueOf(reponse));
                     listeTerme.remove(i-1);
                     listeTerme.remove(i-2);
                     break;
+                }
+                //si c'est un operateur simple, simplement l'appliquer au nombre
+                //appliquer l'exception de la racine n ieme
+                else if (Pattern.matches("(\\d{1,}√)",listeTerme.get(i))) {
+                    double nombre = Double.parseDouble(listeTerme.get(i - 1));
+                    double reponse = Math.pow(nombre,(1/Double.parseDouble(listeTerme.get(i).substring(0,listeTerme.get(i).length()-1))));
+                    listeTerme.set(i, String.valueOf(reponse));
+                    listeTerme.remove(i-1);
+                }
+                //si c'est un nombre, on le skip
+                else if (Pattern.matches("\\d+(\\.(\\d)+)?",listeTerme.get(i))) {}
+
+                //si c'est un operateur simple, on l'applique
+                else {
+                    double nombre = Double.parseDouble(listeTerme.get(i - 1));
+                    String operateur = listeTerme.get(i);
+                    Double reponse = 0.0;
+                    switch (operateur) {
+                        case "²√" -> reponse = Math.sqrt(nombre);
+                        case "ln" -> reponse = Math.log(nombre)/Math.log(E);
+                        case "log"-> reponse = Math.log(nombre);
+                        case "fact"-> reponse = (double) factoriel((int) nombre);
+                        case "sin" -> reponse = Math.sin(nombre);
+                        case "cos" -> reponse = Math.cos(nombre);
+                        case "tan" -> reponse = Math.tan(nombre);
+                        case "arcsin" -> reponse = Math.asin(nombre);
+                        case "arccos" -> reponse = Math.acos(nombre);
+                        case "arctan" -> reponse = Math.atan(nombre);
+                    }
+                    listeTerme.set(i, String.valueOf(reponse));
+                    listeTerme.remove(i-1);
                 }
             }
         return Double.parseDouble(listeTerme.get(0));

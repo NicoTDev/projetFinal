@@ -19,7 +19,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        System.out.println(MathArtisanal.calculer("1 + ( 6 + 7 )"));
+        System.out.println(MathArtisanal.calculer("1 + ( 6 mod 7 )"));
 
     }
 
