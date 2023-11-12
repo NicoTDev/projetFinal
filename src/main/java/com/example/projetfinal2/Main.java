@@ -19,7 +19,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        System.out.println(MathArtisanal.calculer("1 + ( 6 mod 7 )"));
+        MathArtisanal.calculer("cos ( 5 ) + arcsin ( 0.5 ) x ²√ ( 5 )");
 
     }
 

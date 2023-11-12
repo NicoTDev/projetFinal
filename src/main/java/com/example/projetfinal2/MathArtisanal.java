@@ -24,7 +24,7 @@ public class MathArtisanal {
         //pour chaque element
         for (String element : s.split(" ")) {
             //si c'est un nombre, l'ajouter à la sortie
-            if (Pattern.matches("\\d+(\\.(\\d)+)?",element))
+            if (Pattern.matches("-?(\\d+(\\.(\\d)+)?)",element))
                 expression.add(element);
                 //si c'est une paranthèse ouvrante, mettre sur le top de la pile
             else if (element.equals("("))
@@ -34,6 +34,10 @@ public class MathArtisanal {
                 while (!operateurs.peek().equals("("))
                     expression.add(operateurs.pop());
                 operateurs.pop();
+                //regarder à la fin si le sommet de la pile est une fonction
+                if (!operateurs.isEmpty())
+                    if (!Pattern.matches("-?(\\d+(\\.(\\d)+)?)",element))
+                        expression.add(operateurs.pop());
             }
             //sinon, faire la priorité des opérateurs
             else if (PRIORITE.contains(element)) {
@@ -77,7 +81,14 @@ public class MathArtisanal {
                         case "/" -> reponse = nombre1 / nombre2;
                         case "^" -> reponse = Math.pow(nombre1,nombre2);
                         case "mod"-> reponse = nombre1 % nombre2;
+
                         //mode programmeur
+                        case ">>" -> {}
+                        case "<<" -> {}
+                        case "OR" -> {}
+                        case "XOR" -> {}
+                        case "NOT" -> {}
+                        case "AND" -> {}
                     }
                     listeTerme.set(i, String.valueOf(reponse));
                     listeTerme.remove(i-1);
@@ -91,9 +102,10 @@ public class MathArtisanal {
                     double reponse = Math.pow(nombre,(1/Double.parseDouble(listeTerme.get(i).substring(0,listeTerme.get(i).length()-1))));
                     listeTerme.set(i, String.valueOf(reponse));
                     listeTerme.remove(i-1);
+                    break;
                 }
                 //si c'est un nombre, on le skip
-                else if (Pattern.matches("\\d+(\\.(\\d)+)?",listeTerme.get(i))) {}
+                else if (Pattern.matches("-?(\\d+(\\.(\\d)+)?)",listeTerme.get(i))) {}
 
                 //si c'est un operateur simple, on l'applique
                 else {
@@ -101,6 +113,7 @@ public class MathArtisanal {
                     String operateur = listeTerme.get(i);
                     Double reponse = 0.0;
                     switch (operateur) {
+                        //mode scientifique / standard
                         case "²√" -> reponse = Math.sqrt(nombre);
                         case "ln" -> reponse = Math.log(nombre)/Math.log(E);
                         case "log"-> reponse = Math.log(nombre);
@@ -111,9 +124,15 @@ public class MathArtisanal {
                         case "arcsin" -> reponse = Math.asin(nombre);
                         case "arccos" -> reponse = Math.acos(nombre);
                         case "arctan" -> reponse = Math.atan(nombre);
+                        //mode programmeur
+                        case "bin" -> {}
+                        case "oct" -> {}
+                        case "dec" -> {}
+                        case "hex" -> {}
                     }
                     listeTerme.set(i, String.valueOf(reponse));
                     listeTerme.remove(i-1);
+                    break;
                 }
             }
         return Double.parseDouble(listeTerme.get(0));

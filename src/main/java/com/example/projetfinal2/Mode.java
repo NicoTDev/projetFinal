@@ -8,11 +8,12 @@ import java.util.Map;
 
 public enum Mode {
     STANDARD (new ArrayList<>(Arrays.asList(new String[]{"1/x","x²","xⁿ","²√x","ⁿ√x","(",")","x","÷","+","-","-x",","})),
-              new ArrayList<>(Arrays.asList(new String[]{"1 / "," ^ 2 "," ^ "," ²√ ( ","√ ( ","( "," )"," x "," ÷ "," + "," - "," -",","}))),
+              new ArrayList<>(Arrays.asList(new String[]{"1 / "," ^ 2 "," ^ ","²√ ( ","√ ( ","( "," )"," x "," ÷ "," + "," - ","-",","}))),
 
     SCIENTIFIQUE (new ArrayList<>(Arrays.asList(new String[]{"mod","eⁿ","ln","log","fact","sin","arcsin","cos","arccos","tan","arctan","π","e"})),
                   new ArrayList<>(Arrays.asList(new String[]{" mod ","e ^ ","ln ( ","log ( ","fact ( ","sin ( ","arcsin ( ","cos ( ","arccos ( ","tan ( ","arctan ( ","π","e"}))),
-    PROGRAMMEUR (new ArrayList<>(), new ArrayList<>());
+    PROGRAMMEUR (new ArrayList<>(Arrays.asList(new String[]{"ToBin","ToOct","ToDec","ToHex","","<<",">>","Or","Xor","Not","And","",""})),
+                new ArrayList<>(Arrays.asList(new String[]{"bin ( ","oct ( ","dec ( ","hex ( ",""," << "," >> "," OR "," XOR "," NOT "," AND ","",""})));
     public final ArrayList<String> valeursDeBouton;
 
     public final ArrayList<String> symboles;
