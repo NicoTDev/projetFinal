@@ -2,92 +2,214 @@ package com.example.projetfinal2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
-public class Controller {
+import java.net.URL;
+import java.security.spec.ECField;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 
-    public Mode mode = Mode.STANDARD;
+public class Controller implements Initializable {
 
-    @FXML
-    private Button boutonExposant2;
-    @FXML
-    private Button boutonExposantn;
-    @FXML
-    private Button boutonRacineCarre;
-    @FXML
-    private Button boutonRacineNieme;
-    @FXML
-    private Button boutonParaGauche;
-    @FXML
-    private Button boutonParaDroit;
-    @FXML
-    private Button boutonFois;
-    @FXML
-    private Button boutonDiviser;
-    @FXML
-    private Button boutonPlus;
-    @FXML
-    private Button boutonMoins;
-    @FXML
-    private Button boutonInverserSigne;
-    @FXML
-    private Button boutonVirgule;
-    @FXML
-    private Button bouton1_xMod;
-    @FXML
-    private Label expressionLabel;
+    public VBox fenetreStandard;
 
-    @FXML
-    protected void changerModeScientifique() {
-        mode = Mode.SCIENTIFIQUE;
-        mettreAJourBouton();
-    }
+    public VBox fenetreProgrammeur;
+
+    public VBox fenetreConversion;
+    public VBox fenetreScientifque;
+    public Label labelStandard;
+    public Label labelScientifique;
+    public Label labelProgrammeur;
+
+
+    public ChoiceBox choiceBoxTypeConversion;
+    public ChoiceBox choiceBoxConversionBase;
+    public ChoiceBox choiceBoxConversionRecherchee;
+    public TextField fieldMesures;
+    public Label labelResultat;
+
+
+    ArrayList symboles = new ArrayList<>(Arrays.asList("1/x","x²","xⁿ","²√x","ⁿ√x","(",")","x","÷","+","-","-x",",",
+            "mod","eⁿ","ln","log","fact","sin","arcsin","cos","arccos","tan","arctan","π","e",
+            "ToBin","ToOct","ToDec","ToHex","<<",">>","Or","Xor","Not","And"));
+    ArrayList valeurs = new ArrayList<>(Arrays.asList("1 / "," ^ 2 "," ^ ","²√ ( ","√ ( ","( "," )"," x "," ÷ "," + "," - ","-",",",
+            " mod ","e ^ ","ln ( ","log ( ","fact ( ","sin ( ","arcsin ( ","cos ( ","arccos ( ","tan ( ","arctan ( ","π","e",
+            "bin ( ","oct ( ","dec ( ","hex ( ",""," << "," >> "," OR "," XOR "," NOT "," AND "));
+
 
     @FXML
-    protected void changerModeProgrammeur() {
-        mode = Mode.PROGRAMMEUR;
-        mettreAJourBouton();
-    }
+    Label labelActif;
 
-    @FXML
-    protected void changerModeStandard() {
-        mode = Mode.STANDARD;
-        mettreAJourBouton();
-    }
-    private void mettreAJourBouton() {
-        bouton1_xMod.setText(mode.valeursDeBouton.get(0));
-        boutonExposant2.setText(mode.valeursDeBouton.get(1));
-        boutonExposantn.setText(mode.valeursDeBouton.get(2));
-        boutonRacineCarre.setText(mode.valeursDeBouton.get(3));
-        boutonRacineNieme.setText(mode.valeursDeBouton.get(4));
-        boutonParaGauche.setText(mode.valeursDeBouton.get(5));
-        boutonParaDroit.setText(mode.valeursDeBouton.get(6));
-        boutonFois.setText(mode.valeursDeBouton.get(7));
-        boutonDiviser.setText(mode.valeursDeBouton.get(8));
-        boutonPlus.setText(mode.valeursDeBouton.get(9));
-        boutonMoins.setText(mode.valeursDeBouton.get(10));
-        boutonInverserSigne.setText(mode.valeursDeBouton.get(11));
-        boutonVirgule.setText(mode.valeursDeBouton.get(12));
+    Runnable fonctionALancer;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            labelActif = labelStandard;
+
+            choiceBoxTypeConversion.getItems().addAll("Température", "Poids et masse", "Longueurs", "Vitesses", "Angles", "Volumes", "Devises", "Temps");
+
+            choiceBoxTypeConversion.setOnAction(n -> {
+                switch (choiceBoxTypeConversion.getValue().toString()) {
+                    case "Température":
+                        choiceBoxConversionBase.getItems().setAll("fahrenheit", "kelvin", "celcius");
+                        choiceBoxConversionRecherchee.getItems().setAll("fahrenheit", "kelvin", "celcius");
+                        choiceBoxConversionBase.setValue("celcius");
+                        choiceBoxConversionRecherchee.setValue("celcius");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirTemperature(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Poids et masse":
+                        choiceBoxConversionBase.getItems().setAll("nanogrammes", "milligrammes", "centigrammes", "grammes", "kilogrammes", "newtons", "tonnes métriques", "tonnes longues", "stones", "livres", "onces");
+                        choiceBoxConversionRecherchee.getItems().setAll("microgrammes", "milligrammes", "centigrammes", "grammes", "kilogrammes", "newtons", "tonnes métriques", "tonnes longues", "stones", "livres", "onces");
+                        choiceBoxConversionBase.setValue("grammes");
+                        choiceBoxConversionRecherchee.setValue("grammes");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirPoidsEtMasse(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Longueurs":
+                        choiceBoxConversionBase.getItems().setAll("pieds", "pouces", "micromètres", "millimètres", "centimètres", "mètres", "decimètres", "decamètres", "hectomètres", "kilomètres", "megamètres");
+                        choiceBoxConversionRecherchee.getItems().setAll("pieds", "pouces", "micromètres", "millimètres", "centimètres", "mètres", "decimètres", "decamètres", "hectomètres", "kilomètres", "megamètres");
+                        choiceBoxConversionBase.setValue("mètres");
+                        choiceBoxConversionRecherchee.setValue("mètres");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirLongueur(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Vitesses":
+                        choiceBoxConversionBase.getItems().setAll("noeuds", "kilomètres par heure", "pieds par seconde", "miles par seconde", "mètres par seconde");
+                        choiceBoxConversionRecherchee.getItems().setAll("noeuds", "kilomètres par heure", "pieds par seconde", "miles par seconde", "mètres par seconde");
+                        choiceBoxConversionBase.setValue("mètres par seconde");
+                        choiceBoxConversionRecherchee.setValue("mètres par seconde");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirVitesse(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Angles":
+                        choiceBoxConversionBase.getItems().setAll("degrés", "radians");
+                        choiceBoxConversionRecherchee.getItems().setAll("degrés", "radians");
+                        choiceBoxConversionBase.setValue("degrés");
+                        choiceBoxConversionRecherchee.setValue("degrés");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirAngle(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Volumes":
+                        choiceBoxConversionBase.getItems().setAll("microlitre", "millilitre", "centilitre", "decilitre", "litre", "kilolitre", "megalitre", "gallon américain", "quart américain", "pinte américaine liquide", "tasse américain", "once liquide américaine", "cuillère à soupe américaine",
+                                "mètre cube", "gallon impérial", "quart impérial", "pinte impériale", "tasse impériale", "once liquide impériale", "cuillère à soupe impériale",
+                                "cuillère à café impériale", "pied cube", "pouce cube");
+                        choiceBoxConversionRecherchee.getItems().setAll("microlitre", "millilitre", "centilitre", "decilitre", "litre", "kilolitre", "megalitre", "gallon américain", "quart américain", "pinte américaine liquide", "tasse américain", "once liquide américaine", "cuillère à soupe américaine",
+                                "mètre cube", "gallon impérial", "quart impérial", "pinte impériale", "tasse impériale", "once liquide impériale", "cuillère à soupe impériale",
+                                "cuillère à café impériale", "pied cube", "pouce cube");
+                        choiceBoxConversionBase.setValue("litre");
+                        choiceBoxConversionRecherchee.setValue("litre");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirVolume(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Devises":
+                        choiceBoxConversionBase.getItems().setAll("dollar canadien","dollar américain","franc suisse","peso mexicain","rouble russe","won sud-coréen","roupie indienne",
+                                                                  "euro","couronne suédoise","couronne islandaise","yen","V-Bucks Fortnite");
+                        choiceBoxConversionRecherchee.getItems().setAll("dollar canadien","dollar américain","franc suisse","peso mexicain","rouble russe","won sud-coréen","roupie indienne",
+                                "euro","couronne suédoise","couronne islandaise","yen","V-Bucks Fortnite");
+                        choiceBoxConversionBase.setValue("dollar canadien");
+                        choiceBoxConversionRecherchee.setValue("dollar canadien");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirArgent(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                    case "Temps":
+                        choiceBoxConversionBase.getItems().setAll("nanosecondes","microsecondes","millisecondes","secondes","minutes","heures","jours","semaines","mois","années");
+                        choiceBoxConversionRecherchee.getItems().setAll("nanosecondes","microsecondes","millisecondes","secondes","minutes","heures","jours","semaines","mois","années");
+                        choiceBoxConversionBase.setValue("secondes");
+                        choiceBoxConversionRecherchee.setValue("secondes");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirTemps(choiceBoxConversionBase.getValue().toString()
+                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
+                }
+            });
+
+            fieldMesures.textProperty().addListener(n -> {
+                try {
+                    fonctionALancer.run();
+                }catch (NumberFormatException e) {
+                    labelResultat.setText("N/A");
+                }
+            });
+
+            choiceBoxTypeConversion.setValue("Température");
+            labelResultat.setText("N/A");
+
+            choiceBoxConversionBase.setOnAction(v -> {
+                try {
+                    fonctionALancer.run();
+                } catch (NumberFormatException e) {
+                    labelResultat.setText("N/A");
+                }
+            });
+            choiceBoxConversionRecherchee.setOnAction(v-> {
+                try {
+                    fonctionALancer.run();
+                } catch (NumberFormatException e) {
+                    labelResultat.setText("N/A");
+                }
+            });
+        }
+        catch (NumberFormatException e) {
+            System.out.println("CRASH");
+        }
+
+
+
     }
 
     public void appuyerBoutonChangeant(ActionEvent actionEvent) {
-        int numeroDeBouton = mode.valeursDeBouton.indexOf(((Button) (actionEvent.getSource())).getText());
-        expressionLabel.setText(expressionLabel.getText() + mode.symboles.get(numeroDeBouton));
+        int numeroDeBouton = symboles.indexOf(((Button) (actionEvent.getSource())).getText());
+        labelActif.setText(labelActif.getText() + valeurs.get(numeroDeBouton));
     }
 
 
+    @FXML
+    public void changerModeStandard() {
+        labelActif = labelStandard;
+        fenetreStandard.toFront();
+    }
+
+    @FXML
+    public void changerModeConversion() {
+        fenetreConversion.toFront();
+    }
+
+    @FXML
+    public void changerModeProgrammeur() {
+        labelActif = labelProgrammeur;
+        fenetreProgrammeur.toFront();
+    }
+
+    @FXML
+    public void changerModeScientifique() {
+        labelActif = labelScientifique;
+        fenetreScientifque.toFront();
+    }
+
+    @FXML
+    public void changerModeGraphique() {}
+
+    @FXML
     public void effacer(ActionEvent actionEvent) {
-        expressionLabel.setText("");
+        labelActif.setText("");
     }
 
-    public void egal(ActionEvent actionEvent) {
-        System.out.println(expressionLabel.getText());
-        expressionLabel.setText(String.valueOf(MathArtisanal.calculer(expressionLabel.getText().trim())));
-
+    @FXML
+    public void egalPrio(ActionEvent actionEvent) {
+        labelActif.setText(String.valueOf(MathArtisanal.calculer(labelActif.getText().trim(),true)));
+    }
+    @FXML
+    public void egalPasPrio(ActionEvent actionEvent) {
+        labelActif.setText(String.valueOf(MathArtisanal.calculer(labelActif.getText().trim(),false)));
     }
 
     public void appuyerBoutonNumerique(ActionEvent actionEvent) {
-        expressionLabel.setText(expressionLabel.getText() + ((Button) actionEvent.getSource()).getText());
+        labelActif.setText(labelActif.getText() + ((Button) actionEvent.getSource()).getText());
     }
 }

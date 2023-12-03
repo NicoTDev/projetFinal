@@ -6,9 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.regex.Pattern;
+import java.util.Currency;
 
 public class Main extends Application {
     @Override
@@ -18,9 +16,7 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-
-        MathArtisanal.calculer("cos ( 5 ) + arcsin ( 0.5 ) x ²√ ( 5 )");
-
+        //System.out.println(MathArtisanal.calculer("cos ( 5 ) + arcsin ( 0.5 ) x ²√ ( 5 )", false));
     }
 
     public static void main(String[] args) {

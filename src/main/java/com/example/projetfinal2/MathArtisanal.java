@@ -1,5 +1,9 @@
 package com.example.projetfinal2;
 
+import java.util.ArrayList;
+import java.util.Stack;
+import java.util.regex.Pattern;
+
 public class MathArtisanal {
 
     public static final double PI = 3.14159265358979323846;
@@ -13,7 +17,7 @@ public class MathArtisanal {
         return s;
     }
 
-    private static ArrayList<String> mettreSousNotation(String s) {
+    private static ArrayList<String> mettreSousNotation(String s, boolean priorite) {
         //mettre la string sous la forme de programmation
         s = s.replaceAll("÷", "/").replaceAll(",",".").replaceAll("x","*")
              .replaceAll("π",String.valueOf(PI)).replaceAll("e",String.valueOf(Math.E));
@@ -39,19 +43,24 @@ public class MathArtisanal {
                     if (!Pattern.matches("-?(\\d+(\\.(\\d)+)?)",element))
                         expression.add(operateurs.pop());
             }
-            //sinon, faire la priorité des opérateurs
+            //sinon, faire la priorité des opérateurs (ou pas)
             else if (PRIORITE.contains(element)) {
                 //si c’est un opérateur o1 alors
-                if (operateurs.isEmpty())
-                    operateurs.add(element);
-                else {
-                    while (PRIORITE.indexOf(element) <= PRIORITE.indexOf(operateurs.peek())) {
+                if (priorite) {
+                    if (operateurs.isEmpty())
+                        operateurs.add(element);
+                    else {
+                        while (PRIORITE.indexOf(element) <= PRIORITE.indexOf(operateurs.peek())) {
+                            expression.add(operateurs.pop());
+                            if (operateurs.isEmpty())
+                                break;
+                        }
                         expression.add(operateurs.pop());
-                        if (operateurs.isEmpty())
-                            break;
+                        operateurs.add(element);
                     }
-                    operateurs.add(element);
                 }
+                else
+                    operateurs.add(element);
             }
             //else, si c'est une fonction
             else
@@ -63,8 +72,9 @@ public class MathArtisanal {
         return expression;
     }
 
-    public static Double calculer(String expression) {
-        ArrayList<String> listeTerme = mettreSousNotation(expression);
+    public static Double calculer(String expression, boolean priorite) {
+        ArrayList<String> listeTerme;
+        listeTerme = mettreSousNotation(expression, priorite);
         while (listeTerme.size() > 1)
             for (int i = 0 ; i < listeTerme.size(); i++) {
                 //si c'est un operateur double (qui a besoin de plusieurs valeurs)
