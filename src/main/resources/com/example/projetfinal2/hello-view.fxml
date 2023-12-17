@@ -77,7 +77,7 @@
                      </VBox.margin></HBox>
                </children>
             </VBox>
-            <VBox fx:id="fenetreProgrammeur" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;">
+            <VBox fx:id="fenetreProgrammeur" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: lightgrey;">
                <children>
                   <Label id="expressionLabel" fx:id="labelProgrammeur" alignment="CENTER" prefHeight="85.0" prefWidth="600.0" textAlignment="CENTER">
                      <font>
@@ -100,27 +100,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="prog" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ToBin" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="x²" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ToOct" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="xⁿ" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ToHex" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="²√x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ToDec" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ⁿ√x" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text=")" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -140,12 +140,12 @@
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="(" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="&lt;&lt;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text=")" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="&gt;&gt;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -165,12 +165,12 @@
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="And" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="÷" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="Not" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -190,12 +190,12 @@
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="310.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button layoutX="310.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="Or" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <Button layoutX="410.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button layoutX="410.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="Xor" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -229,156 +229,238 @@
                   </GridPane>
                </children>
             </VBox>
-            <VBox fx:id="fenetreScientifque" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: lightgrey;" visible="false">
+            <VBox fx:id="fenetreScientifque" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: lightgrey;">
                <children>
                   <Label id="expressionLabel" fx:id="labelScientifique" alignment="CENTER" prefHeight="85.0" prefWidth="600.0" textAlignment="CENTER">
                      <font>
                         <Font name="Cambria" size="25.0" />
                      </font>
                   </Label>
-                  <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="470.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <HBox prefHeight="391.0" prefWidth="600.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="science" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="x²" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="xⁿ" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="²√x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="ⁿ√x" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="(" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text=")" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="÷" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="110.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="210.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="310.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="410.0" layoutY="111.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="311.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="110.0" layoutY="311.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="80.0" prefWidth="80.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="210.0" layoutY="311.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="80.0" prefWidth="80.0" text="," GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="310.0" layoutY="311.0" mnemonicParsing="false" onAction="#egalPrio" prefHeight="80.0" prefWidth="80.0" text="=" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="410.0" layoutY="311.0" mnemonicParsing="false" onAction="#effacer" prefHeight="80.0" prefWidth="80.0" text="AC" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
+                        <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="600.0" style="-fx-alignment: Center;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button alignment="CENTER" layoutX="110.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="210.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="110.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="210.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="111.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="110.0" layoutY="111.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="210.0" layoutY="111.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="311.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="-x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="110.0" layoutY="311.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="210.0" layoutY="311.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="," GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="145.0" layoutY="366.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="sin" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="16.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="arcsin" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="16.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="cos" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="76.0" layoutY="16.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="arccos" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="10.0" layoutY="86.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="tan" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="76.0" layoutY="86.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="arctan" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="142.0" layoutY="16.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="fact" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="13.0" layoutY="156.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="e" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="79.0" layoutY="156.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="π" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="145.0" layoutY="16.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="mod" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="221.0" layoutY="15.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="xⁿ" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="221.0" layoutY="85.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="÷" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="221.0" layoutY="155.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="x" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="221.0" layoutY="225.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="295.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="-" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="365.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#egalPrio" prefHeight="60.0" prefWidth="60.0" text="=" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="435.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#effacer" prefHeight="60.0" prefWidth="60.0" text="AC" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="221.0" layoutY="85.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="x²" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="330.0" layoutY="15.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="²√x" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="15.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="ⁿ√x" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="85.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="eⁿ" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="85.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="(" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="155.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text=")" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="155.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="ln" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="225.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="log" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="430.0" layoutY="225.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="1/x" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" layoutX="530.0" layoutY="225.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonChangeant" prefHeight="60.0" prefWidth="60.0" text="EE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="430.0" layoutY="365.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#appuyerBoutonNumerique" prefHeight="60.0" prefWidth="60.0" text="ANS" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </GridPane>
                      </children>
-                  </GridPane>
+                  </HBox>
                </children>
             </VBox>
             <VBox fx:id="fenetreStandard" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" visible="false">

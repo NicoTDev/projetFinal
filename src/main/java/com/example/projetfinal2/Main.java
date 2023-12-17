@@ -16,7 +16,8 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-        //System.out.println(MathArtisanal.calculer("cos ( 5 ) + arcsin ( 0.5 ) x ²√ ( 5 )", false));
+        System.out.println(MathArtisanal.calculer("( cos ( 5 + 1 ) + arcsin ( 0.5 ) x ²√ ( 5 ) ) x 5", false,0));
+        System.out.println(MathArtisanal.calculer("cos ( 5 + 1 ) + arcsin ( 0.5 ) x ²√ ( 5 )", true,0));
     }
 
     public static void main(String[] args) {

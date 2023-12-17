@@ -34,19 +34,23 @@ public class Controller implements Initializable {
     public TextField fieldMesures;
     public Label labelResultat;
 
+    public double ancienneReponse = 0;
+
 
     ArrayList symboles = new ArrayList<>(Arrays.asList("1/x","x²","xⁿ","²√x","ⁿ√x","(",")","x","÷","+","-","-x",",",
-            "mod","eⁿ","ln","log","fact","sin","arcsin","cos","arccos","tan","arctan","π","e",
+            "mod","eⁿ","ln","log","fact","sin","arcsin","cos","arccos","tan","arctan","π","e","EE",
             "ToBin","ToOct","ToDec","ToHex","<<",">>","Or","Xor","Not","And"));
     ArrayList valeurs = new ArrayList<>(Arrays.asList("1 / "," ^ 2 "," ^ ","²√ ( ","√ ( ","( "," )"," x "," ÷ "," + "," - ","-",",",
-            " mod ","e ^ ","ln ( ","log ( ","fact ( ","sin ( ","arcsin ( ","cos ( ","arccos ( ","tan ( ","arctan ( ","π","e",
-            "bin ( ","oct ( ","dec ( ","hex ( ",""," << "," >> "," OR "," XOR "," NOT "," AND "));
+            " mod ","e ^ ","ln ( ","log ( ","fact ( ","sin ( ","arcsin ( ","cos ( ","arccos ( ","tan ( ","arctan ( ","π","e"," x 10 ^ ",
+            "bin ( ","oct ( ","dec ( ","hex ( "," << "," >> "," OR "," XOR "," NOT "," AND "));
 
 
     @FXML
     Label labelActif;
 
     Runnable fonctionALancer;
+
+    //Seulement utile pour la conversion de mesures
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -62,7 +66,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("celcius");
                         choiceBoxConversionRecherchee.setValue("celcius");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirTemperature(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Poids et masse":
                         choiceBoxConversionBase.getItems().setAll("nanogrammes", "milligrammes", "centigrammes", "grammes", "kilogrammes", "newtons", "tonnes métriques", "tonnes longues", "stones", "livres", "onces");
@@ -70,7 +74,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("grammes");
                         choiceBoxConversionRecherchee.setValue("grammes");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirPoidsEtMasse(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Longueurs":
                         choiceBoxConversionBase.getItems().setAll("pieds", "pouces", "micromètres", "millimètres", "centimètres", "mètres", "decimètres", "decamètres", "hectomètres", "kilomètres", "megamètres");
@@ -78,7 +82,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("mètres");
                         choiceBoxConversionRecherchee.setValue("mètres");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirLongueur(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Vitesses":
                         choiceBoxConversionBase.getItems().setAll("noeuds", "kilomètres par heure", "pieds par seconde", "miles par seconde", "mètres par seconde");
@@ -86,7 +90,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("mètres par seconde");
                         choiceBoxConversionRecherchee.setValue("mètres par seconde");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirVitesse(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                ,Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Angles":
                         choiceBoxConversionBase.getItems().setAll("degrés", "radians");
@@ -94,7 +98,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("degrés");
                         choiceBoxConversionRecherchee.setValue("degrés");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirAngle(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Volumes":
                         choiceBoxConversionBase.getItems().setAll("microlitre", "millilitre", "centilitre", "decilitre", "litre", "kilolitre", "megalitre", "gallon américain", "quart américain", "pinte américaine liquide", "tasse américain", "once liquide américaine", "cuillère à soupe américaine",
@@ -106,7 +110,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("litre");
                         choiceBoxConversionRecherchee.setValue("litre");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirVolume(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Devises":
                         choiceBoxConversionBase.getItems().setAll("dollar canadien","dollar américain","franc suisse","peso mexicain","rouble russe","won sud-coréen","roupie indienne",
@@ -116,7 +120,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("dollar canadien");
                         choiceBoxConversionRecherchee.setValue("dollar canadien");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirArgent(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                     case "Temps":
                         choiceBoxConversionBase.getItems().setAll("nanosecondes","microsecondes","millisecondes","secondes","minutes","heures","jours","semaines","mois","années");
@@ -124,7 +128,7 @@ public class Controller implements Initializable {
                         choiceBoxConversionBase.setValue("secondes");
                         choiceBoxConversionRecherchee.setValue("secondes");
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirTemps(choiceBoxConversionBase.getValue().toString()
-                                , Double.valueOf(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
+                                , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
                 }
             });
@@ -158,13 +162,11 @@ public class Controller implements Initializable {
         catch (NumberFormatException e) {
             System.out.println("CRASH");
         }
-
-
-
     }
 
     public void appuyerBoutonChangeant(ActionEvent actionEvent) {
         int numeroDeBouton = symboles.indexOf(((Button) (actionEvent.getSource())).getText());
+        System.out.println(numeroDeBouton);
         labelActif.setText(labelActif.getText() + valeurs.get(numeroDeBouton));
     }
 
@@ -202,11 +204,22 @@ public class Controller implements Initializable {
 
     @FXML
     public void egalPrio(ActionEvent actionEvent) {
-        labelActif.setText(String.valueOf(MathArtisanal.calculer(labelActif.getText().trim(),true)));
+        try {
+            ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), true, ancienneReponse);
+            labelActif.setText(String.valueOf(ancienneReponse));
+        } catch (Exception e) {
+            labelActif.setText("Error");
+        }
     }
     @FXML
     public void egalPasPrio(ActionEvent actionEvent) {
-        labelActif.setText(String.valueOf(MathArtisanal.calculer(labelActif.getText().trim(),false)));
+        try {
+            ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), false, ancienneReponse);
+            labelActif.setText(String.valueOf(ancienneReponse));
+        }
+        catch (Exception e) {
+            labelActif.setText("Err");
+        }
     }
 
     public void appuyerBoutonNumerique(ActionEvent actionEvent) {
