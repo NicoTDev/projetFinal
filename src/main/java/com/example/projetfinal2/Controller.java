@@ -240,7 +240,6 @@ public class Controller implements Initializable {
         String equation = labelActif.getText();
         try {
             ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), true, ancienneReponse);
-            System.out.println(equation);
             labelActif.setText((ancienneReponse % 1 != 0 ) ? String.valueOf(ancienneReponse) : String.valueOf((int) ancienneReponse));
         } catch (Exception e) {
             labelActif.setText("Error");
@@ -253,7 +252,6 @@ public class Controller implements Initializable {
         String equation = labelActif.getText();
         try {
             ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), false, ancienneReponse);
-            System.out.println("modulo de " + ancienneReponse + " : " + ancienneReponse%1 + "et ceci est " + (ancienneReponse % 1 ==0));
             labelActif.setText((ancienneReponse % 1 != 0 ) ? String.valueOf(ancienneReponse) : String.valueOf((int) ancienneReponse));
         }
         catch (Exception e) {
