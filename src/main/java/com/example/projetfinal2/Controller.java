@@ -1,12 +1,14 @@
 package com.example.projetfinal2;
 
+import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -35,6 +37,10 @@ public class Controller implements Initializable {
     public Label labelResultat;
 
     public double ancienneReponse = 0;
+    public TableView tableViewHistorique;
+    public TableColumn colonneEquat;
+    public TableColumn colonneRepo;
+    public TableColumn colonneMode;
 
 
     ArrayList symboles = new ArrayList<>(Arrays.asList("1/x","x²","xⁿ","²√x","ⁿ√x","(",")","x","÷","+","-","-x",",",
@@ -48,15 +54,18 @@ public class Controller implements Initializable {
     @FXML
     Label labelActif;
 
+    String mode = "Standard";
     Runnable fonctionALancer;
 
     //Seulement utile pour la conversion de mesures
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //pour le menu conversion
         try {
             labelActif = labelStandard;
 
-            choiceBoxTypeConversion.getItems().addAll("Température", "Poids et masse", "Longueurs", "Vitesses", "Angles", "Volumes", "Devises", "Temps");
+            choiceBoxTypeConversion.getItems().addAll("Température", "Poids et masse", "Longueurs", "Vitesses", "Angles", "Volumes", "Devises", "Temps","Base de nombre");
 
             choiceBoxTypeConversion.setOnAction(n -> {
                 switch (choiceBoxTypeConversion.getValue().toString()) {
@@ -130,6 +139,14 @@ public class Controller implements Initializable {
                         fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirTemps(choiceBoxConversionBase.getValue().toString()
                                 , Float.parseFloat(fieldMesures.getText()), choiceBoxConversionRecherchee.getValue().toString())));
                         break;
+                    case "Base de nombre":
+                        choiceBoxConversionBase.getItems().setAll("Binaire","Octa","Décimal","Hexadécimal");
+                        choiceBoxConversionRecherchee.getItems().setAll("Binaire","Octa","Décimal","Hexadécimal");
+                        choiceBoxConversionBase.setValue("Décimal");
+                        choiceBoxConversionRecherchee.setValue("Décimal");
+                        fonctionALancer = () -> labelResultat.setText(String.valueOf(ConvertisseurMesures.convertirProgrammeur(choiceBoxConversionBase.getValue().toString()
+                                , fieldMesures.getText() , choiceBoxConversionRecherchee.getValue().toString())));
+                        break;
                 }
             });
 
@@ -162,6 +179,14 @@ public class Controller implements Initializable {
         catch (NumberFormatException e) {
             System.out.println("CRASH");
         }
+
+        //pour le menu historique
+        final ObservableList<Resultat> data = FXCollections.observableArrayList();
+
+        colonneEquat.setCellValueFactory(new PropertyValueFactory<Resultat,String>("equation"));
+        colonneRepo.setCellValueFactory(new PropertyValueFactory<Resultat,String>("resultat"));
+        colonneMode.setCellValueFactory(new PropertyValueFactory<Resultat,String>("mode"));
+
     }
 
     public void appuyerBoutonChangeant(ActionEvent actionEvent) {
@@ -175,6 +200,7 @@ public class Controller implements Initializable {
     public void changerModeStandard() {
         labelActif = labelStandard;
         fenetreStandard.toFront();
+        mode = "Standard";
     }
 
     @FXML
@@ -186,12 +212,19 @@ public class Controller implements Initializable {
     public void changerModeProgrammeur() {
         labelActif = labelProgrammeur;
         fenetreProgrammeur.toFront();
+        mode = "Programmeur";
     }
 
     @FXML
     public void changerModeScientifique() {
         labelActif = labelScientifique;
         fenetreScientifque.toFront();
+        mode = "Scientifique";
+    }
+
+    @FXML
+    public void changerModeHistorique() {
+        tableViewHistorique.toFront();
     }
 
     @FXML
@@ -204,21 +237,29 @@ public class Controller implements Initializable {
 
     @FXML
     public void egalPrio(ActionEvent actionEvent) {
+        String equation = labelActif.getText();
         try {
             ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), true, ancienneReponse);
-            labelActif.setText(String.valueOf(ancienneReponse));
+            System.out.println(equation);
+            labelActif.setText((ancienneReponse % 1 != 0 ) ? String.valueOf(ancienneReponse) : String.valueOf((int) ancienneReponse));
         } catch (Exception e) {
             labelActif.setText("Error");
+        } finally {
+            tableViewHistorique.getItems().add(new Resultat(equation,labelActif.getText(),mode));
         }
     }
     @FXML
     public void egalPasPrio(ActionEvent actionEvent) {
+        String equation = labelActif.getText();
         try {
             ancienneReponse = MathArtisanal.calculer(labelActif.getText().trim(), false, ancienneReponse);
-            labelActif.setText(String.valueOf(ancienneReponse));
+            System.out.println("modulo de " + ancienneReponse + " : " + ancienneReponse%1 + "et ceci est " + (ancienneReponse % 1 ==0));
+            labelActif.setText((ancienneReponse % 1 != 0 ) ? String.valueOf(ancienneReponse) : String.valueOf((int) ancienneReponse));
         }
         catch (Exception e) {
             labelActif.setText("Err");
+        } finally {
+            tableViewHistorique.getItems().add(new Resultat(equation,labelActif.getText(),mode));
         }
     }
 

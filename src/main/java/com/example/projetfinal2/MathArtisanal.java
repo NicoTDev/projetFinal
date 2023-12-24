@@ -1,9 +1,6 @@
 package com.example.projetfinal2;
 
-import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class MathArtisanal {
@@ -22,8 +19,8 @@ public class MathArtisanal {
     private static ArrayList<String> mettreSousNotation(String s, boolean priorite, double ancienneReponse) {
 
         //mettre la string sous la forme de programmation
-        s = s.replaceAll("÷", "/").replaceAll(",",".").replaceAll("x","*")
-             .replaceAll("π",String.valueOf(PI)).replaceAll("e",String.valueOf(Math.E)).replaceAll("ANS", String.valueOf(ancienneReponse));
+        s = s.replaceAll("÷", "/").replaceAll(",",".").replaceAll(" x"," *")
+             .replaceAll("π",String.valueOf(PI)).replaceAll("e ",String.valueOf(Math.E)+" ").replaceAll("ANS", String.valueOf(ancienneReponse));
 
         //initialiser les variables
         final String PRIORITE = "-+/*^";
@@ -32,11 +29,14 @@ public class MathArtisanal {
 
         //pour chaque element
         for (String element : s.split(" ")) {
-            System.out.println(operateurs + " element : " + element);
-
             //si c'est un nombre, l'ajouter à la sortie
-            if (Pattern.matches("-?(\\d+(\\.(\\d)+)?)",element.replaceAll("E","")))
+            if (Pattern.matches("-?(\\d+(\\.(\\d)+)?)",element.replaceAll("E",""))) {
                 expression.add(element);
+                //si y'a pas de priorité, on ajoute l'operateur tout suite après
+                if (!priorite && !operateurs.isEmpty())
+                    expression.add(operateurs.pop());
+            }
+
 
             //si c'est une paranthèse ouvrante, mettre sur le top de la pile
             else if (element.equals("("))
@@ -57,11 +57,13 @@ public class MathArtisanal {
 
             //sinon, faire la priorité des opérateurs (ou pas)
             else if (PRIORITE.contains(element)) {
+
                 //si c’est un opérateur o1 alors
                 if (priorite) {
                     if (operateurs.isEmpty())
                         operateurs.add(element);
                     else {
+
                         //On fait le calcul pour savoir quand enlever
                         while (PRIORITE.indexOf(element) <= PRIORITE.indexOf(operateurs.peek())) {
                             expression.add(operateurs.pop());
@@ -85,20 +87,16 @@ public class MathArtisanal {
             while (!operateurs.isEmpty()) {
                 expression.add(operateurs.pop());
             }
-        else {
-            Object[] tableauValeur = operateurs.toArray();
-            for (Object str : tableauValeur)
-                expression.add((String)str);
-        }
         return expression;
     }
 
     public static Double calculer(String expression, boolean priorite, double ancienneReponse) {
         ArrayList<String> listeTerme;
         listeTerme = mettreSousNotation(expression, priorite,ancienneReponse);
+        String[] operateursDouble = new String[]{"mod",">>","<<","OR","XOR","AND"};
         while (listeTerme.size() > 1) {
             for (int i = 0; i < listeTerme.size(); i++) {//si c'est un operateur double (qui a besoin de plusieurs valeurs)
-                if (Pattern.matches("[+\\-*/^]", listeTerme.get(i)) || listeTerme.get(i).equals("mod")) {
+                if (Pattern.matches("[+\\-*/^]", listeTerme.get(i)) || Arrays.stream(operateursDouble).toList().contains(listeTerme.get(i))) {
                     //gérer l'expression par exemple "6+", qui créerait une boucle infinie
                     if (listeTerme.size() > 2) {
                         double nombre1 = Double.parseDouble(listeTerme.get(i - 2));
@@ -115,18 +113,11 @@ public class MathArtisanal {
                             case "mod" -> reponse = nombre1 % nombre2;
 
                             //mode programmeur
-                            case ">>" -> {
-                            }
-                            case "<<" -> {
-                            }
-                            case "OR" -> {
-                            }
-                            case "XOR" -> {
-                            }
-                            case "NOT" -> {
-                            }
-                            case "AND" -> {
-                            }
+                            case ">>" -> reponse = (double) ((int) nombre1 >> (int) nombre2);
+                            case "<<" -> reponse = (double) ((int) nombre1 << (int) nombre2);
+                            case "OR" -> reponse = (double) ((int) nombre1 | (int) nombre2);
+                            case "XOR" -> reponse = (double) ((int) nombre1 ^ (int) nombre2);
+                            case "AND" -> reponse = (double) (((int) nombre1) & ((int) nombre2));
                         }
                         listeTerme.set(i, String.valueOf(reponse));
                         listeTerme.remove(i - 1);
@@ -166,16 +157,9 @@ public class MathArtisanal {
                         case "arcsin" -> reponse = Math.asin(nombre);
                         case "arccos" -> reponse = Math.acos(nombre);
                         case "arctan" -> reponse = Math.atan(nombre);
-                        //mode programmeur
-                        case "bin" -> {
-                        }
-                        case "oct" -> {
-                        }
-                        case "dec" -> {
-                        }
-                        case "hex" -> {
-                        }
+                        case "NOT" -> reponse = (double) ( ~((int) nombre) );
                     }
+                    //si le calcul est un calcul normal, on transforme en string avant
                     listeTerme.set(i, String.valueOf(reponse));
                     listeTerme.remove(i - 1);
                     break;

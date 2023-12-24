@@ -134,6 +134,22 @@ public class ConvertisseurMesures {
         }
     }
 
+    public static String convertirProgrammeur(String uniteDeBase, String item, String uniteeRecherchee) {
+        //transformer en gramme
+        switch (uniteDeBase) {
+            case "Binaire"-> item = String.valueOf(Integer.parseInt(item,2));
+            case "Octa" -> item = String.valueOf(Integer.parseInt(item,8));
+            case "Décimal" -> item = String.valueOf(Integer.parseInt(item,10));
+            case "Hexadécimal" -> item = String.valueOf(Integer.parseInt(item,16));
+        }
+        switch (uniteeRecherchee) {
+            case "Binaire" -> { return Integer.toBinaryString(Integer.parseInt(item)); }
+            case "Octa" -> { return Integer.toOctalString(Integer.parseInt(item)); }
+            case "Hexadécimal" -> { return Integer.toHexString(Integer.parseInt(item)); }
+            default -> { return item; }
+
+        }
+    }
     //VITESSE
     public static float convertirVitesse(String uniteDeBase, float item, String uniteRecherchee) {
         switch (uniteDeBase) {
